@@ -7,16 +7,31 @@
 ## Install
 
 ```bash
-npm i parse7
+npm i parse7 -S
+# or yarn add parse7
 ```
 
 ## Usage
 
 ```js
 const parse7 = require('parse7')
+const html = '<div id="app" class="app">I am a APP<!-- I am commnet --></div><input class="input"/>'
+const parseStack = []
 
-parse7()
-//=> foo
+parse7(html, {
+  tagStart(tagName, attrs) {
+    parseStack.push(tagName, attrs)
+  },
+  tagEnd(tagName) {
+    parseStack.push(tagName)
+  },
+  comments(comment) {
+    parseStack.push(comment)
+  },
+  chars(chars) {
+    parseStack.push(chars)
+  }
+})
 ```
 
 ## Contributing

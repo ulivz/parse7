@@ -9,27 +9,27 @@ export default function parse7(s, handlers) {
   let attrRe = /([^=\s]+)(\s*=\s*(("([^"]*)")|('([^']*)')|[^>\s]+))?/gm
   let contentHandler
 
-  function parseAttribute(tagName, attr, name) {
+  function parseAttribute(attr, name) {
     let value = ''
-    if (arguments[7]) {
-      value = arguments[8]
-    } else if (arguments[5]) {
-      value = arguments[6]
-    } else if (arguments[3]) {
-      value = arguments[4]
+    if (arguments[6]) {
+      value = arguments[7]
+    } else if (arguments[4]) {
+      value = arguments[5]
+    } else if (arguments[2]) {
+      value = arguments[3]
     }
     const empty = !value && !arguments[3]
-    return { name: name, value: empty ? null : value }
+    return { name, value: empty ? null : value }
   }
 
-  function parseAttributes(tagName, s) {
+  function parseAttributes(rest) {
     const attrs = []
-    s.replace(attrRe, (...args) => attrs.push(parseAttribute(tagName, ...args)))
+    rest.replace(attrRe, (...args) => attrs.push(parseAttribute(...args)))
     return attrs
   }
 
   function parseStartTag(tag, tagName, rest) {
-    const attrs = parseAttributes(tagName, rest)
+    const attrs = parseAttributes(rest)
     contentHandler.tagStart(tagName, attrs)
     if (tag.substr(-2, 2) === '/>') {
       contentHandler.tagEnd(tagName)
@@ -40,11 +40,13 @@ export default function parse7(s, handlers) {
     contentHandler.tagEnd(tagName)
   }
 
-  function noop() {}
+  function noop() {
+  }
+
   contentHandler = Object.assign({
     tagStart: noop,
     tagEnd: noop,
-    comment: noop,
+    comments: noop,
     chars: noop
   }, handlers)
 
@@ -59,7 +61,7 @@ export default function parse7(s, handlers) {
     if (s.substring(0, 4) === '<!--') {
       index = s.indexOf('-->')
       if (index !== -1) {
-        contentHandler.comment(s.substring(4, index))
+        contentHandler.comments(s.substring(4, index))
         s = s.substring(index + 3)
         treatAsChars = false
       } else {
@@ -94,7 +96,7 @@ export default function parse7(s, handlers) {
     }
 
     else if (treatAsChars) {
-      index = s = s.indexOf('<')
+      index = s.indexOf('<')
       if (index == -1) {
         contentHandler.chars(s)
         s = ''

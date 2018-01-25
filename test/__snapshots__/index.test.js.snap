@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`comments 1`] = `
+Array [
+  "div",
+  Array [
+    Object {
+      "name": "class",
+      "value": "ddd",
+    },
+  ],
+  "Chars",
+  "div",
+  " I am Commnets ",
+]
+`;
+
+exports[`nested 1`] = `
+Array [
+  "a",
+  Array [
+    Object {
+      "name": "class",
+      "value": "content",
+    },
+  ],
+  "Chars",
+  "b",
+  Array [],
+  "CCC",
+  "b",
+  "a",
+]
+`;
+
+exports[`normal 1`] = `
+Array [
+  "div",
+  Array [
+    Object {
+      "name": "class",
+      "value": "content",
+    },
+  ],
+  "Chars",
+  "div",
+]
+`;
+
+exports[`singleClosed 1`] = `
+Array [
+  "app",
+  Array [
+    Object {
+      "name": "class",
+      "value": "content",
+    },
+  ],
+  "app",
+  "div",
+  Array [
+    Object {
+      "name": "id",
+      "value": "1",
+    },
+  ],
+  "Chars",
+  "div",
+]
+`;

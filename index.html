@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Html Css Transformer</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/dmo"></script>
+<script src="https://unpkg.com/parse7"></script>
+<script>
+  window.dmo({
+    title: 'Parse&',
+    input: `<div class="wrapper">
+  <div class="sidebar"></div>
+  <div class="content"></div>
+</div>`,
+    transformers: {
+      scss: function (raw) {
+        const parseStack = [];
+        parse7(raw, {
+          tagStart(tagName, attrs) {
+            parseStack.push(tagName, attrs)
+          },
+          tagEnd(tagName) {
+            parseStack.push(tagName)
+          },
+          comments(comment) {
+            parseStack.push(comment)
+          },
+          chars(chars) {
+            parseStack.push(chars)
+          }
+        })
+        return JSON.stringify(parseStack, null, 2)
+      }
+    },
+    modes: [
+      {
+        key: 'scss',
+        text: 'Html to SCSS'
+      }
+    ]
+  })
+</script>
+</body>
+</html>
