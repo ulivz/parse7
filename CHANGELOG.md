@@ -1,3 +1,13 @@
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/ULIVZ/parse7/compare/v3.0.1...v3.0.2) (2018-01-25)
+
+
+### Features
+
+* update playground ([39dcd9e](https://github.com/ULIVZ/parse7/commit/39dcd9e))
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/ULIVZ/parse7/compare/v3.0.0...v3.0.1) (2018-01-25)
 
