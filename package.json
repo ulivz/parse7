@@ -7,6 +7,7 @@
     "type": "git"
   },
   "main": "dist/parse7.js",
+  "module": "dist/parse7.m.js",
   "files": [
     "dist"
   ],
