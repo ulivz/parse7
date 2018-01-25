@@ -14,25 +14,31 @@ npm i parse7 -S
 ## Usage
 
 ```js
-const parse7 = require('parse7')
-const html = '<div id="app" class="app">I am a APP<!-- I am commnet --></div><input class="input"/>'
-const parseStack = []
+import parse7 from 'parse7'
+// OR const parse7 = require('parse7')
 
-parse7(html, {
-  tagStart(tagName, attrs) {
-    parseStack.push(tagName, attrs)
-  },
-  tagEnd(tagName) {
-    parseStack.push(tagName)
-  },
-  comments(comment) {
-    parseStack.push(comment)
-  },
-  chars(chars) {
-    parseStack.push(chars)
-  }
-})
+parse7(html, handlers)
 ```
+
+## API
+
+### parse7(html, handlers)
+
+#### html
+- Type: `string`
+- Required: `true`
+
+#### handlers
+- Type: `{ [hook: string]: function }`
+- Required: `true`
+
+  Currently there are _**4**_ hooks：
+  
+  - tagStart(name: string, attrs: Array<{ name: string, value: string}>)
+  - tagEnd(name: string)
+  - comments(comment: string)
+  - chars(char: string)
+
 
 ## Contributing
 
