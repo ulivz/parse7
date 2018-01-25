@@ -10,13 +10,15 @@
 <script src="https://unpkg.com/parse7"></script>
 <script>
   window.dmo({
-    title: 'Parse&',
+    title: 'Parse7',
+    username: 'ulivz',
+    name: 'parse7',
     input: `<div class="wrapper">
   <div class="sidebar"></div>
   <div class="content"></div>
 </div>`,
     transformers: {
-      scss: function (raw) {
+      playground: function (raw) {
         const parseStack = [];
         parse7(raw, {
           tagStart(tagName, attrs) {
@@ -34,13 +36,7 @@
         })
         return JSON.stringify(parseStack, null, 2)
       }
-    },
-    modes: [
-      {
-        key: 'scss',
-        text: 'Html to SCSS'
-      }
-    ]
+    }
   })
 </script>
 </body>
