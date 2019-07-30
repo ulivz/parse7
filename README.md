@@ -2,7 +2,7 @@
 # parse7
 
 [![NPM version](https://img.shields.io/npm/v/parse7.svg?style=flat)](https://npmjs.com/package/parse7) [![NPM downloads](https://img.shields.io/npm/dm/parse7.svg?style=flat)](https://npmjs.com/package/parse7) [![CircleCI](https://circleci.com/gh/ULIVZ/parse7/tree/master.svg?style=shield)](https://circleci.com/gh/ULIVZ/parse7/tree/master)  [![codecov](https://codecov.io/gh/ULIVZ/parse7/branch/master/graph/badge.svg)](https://codecov.io/gh/ULIVZ/parse7)
- [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/ULIVZ/donate)
+ [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/ULIVZ/donate) [![Greenkeeper badge](https://badges.greenkeeper.io/ulivz/parse7.svg)](https://greenkeeper.io/)
 
 ## Install
 
